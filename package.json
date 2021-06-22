@@ -30,6 +30,7 @@
     "cloudinary": "1.26.0",
     "final-form": "4.20.2",
     "moment": "2.29.1",
+    "node-mailjet": "3.3.4",
     "react": "alpha",
     "react-dom": "alpha",
     "react-final-form": "6.5.3",
