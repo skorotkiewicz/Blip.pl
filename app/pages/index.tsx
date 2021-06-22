@@ -61,7 +61,7 @@ const Home: BlitzPage = () => {
               </div>
             </div>
           ) : (
-            <UserBox user={currentUser} />
+            <UserBox friends={null} user={currentUser} />
           )}
           <Recommendations />
           <TagcloudBox />

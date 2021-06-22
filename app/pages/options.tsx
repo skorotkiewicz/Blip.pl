@@ -10,7 +10,7 @@ import Header from "app/core/components/Header"
 export const Options = () => {
   const currentUser = useCurrentUser()
   const [saveOptionsMutation] = useMutation(saveOptions)
-  const [user] = useQuery(getUser, { name: currentUser?.name })
+  const [user] = useQuery(getUser, { name: String(currentUser?.name) })
   const router = useRouter()
 
   const [avatar, setAvatar] = useState(user.avatar)
@@ -18,18 +18,18 @@ export const Options = () => {
   const [local, setLocal] = useState(user.local)
   const [www, setWww] = useState(user.www)
   const [about, setAbout] = useState(user.about)
-  const [wallpaper, setWallpaper] = useState(user.wallpaper)
+  // const [wallpaper, setWallpaper] = useState(user.wallpaper)
   const [error, setError] = useState("")
 
   const _save = async () => {
     try {
       let save = await saveOptionsMutation({
-        avatar,
-        fullName,
-        local,
-        www,
-        about,
-        wallpaper,
+        avatar: String(avatar),
+        fullName: String(fullName),
+        local: String(local),
+        www: String(www),
+        about: String(about),
+        // wallpaper: String(wallpaper),
       })
       setError("Okay")
       return save
@@ -54,13 +54,13 @@ export const Options = () => {
             Avatar <br />
             <input
               name="avatar"
-              value={avatar}
+              value={String(avatar)}
               onChange={(e) => {
                 setAvatar(e.target.value)
               }}
             />
           </p>
-          <p>
+          {/* <p>
             Wallpaper <br />
             <input
               name="wallpaper"
@@ -69,13 +69,13 @@ export const Options = () => {
                 setWallpaper(e.target.value)
               }}
             />
-          </p>
+          </p> */}
 
           <p>
             Full Name <br />
             <input
               name="fullName"
-              value={fullName}
+              value={String(fullName)}
               onChange={(e) => {
                 setFullName(e.target.value)
               }}
@@ -85,7 +85,7 @@ export const Options = () => {
             Localization <br />
             <input
               name="local"
-              value={local}
+              value={String(local)}
               onChange={(e) => {
                 setLocal(e.target.value)
               }}
@@ -95,7 +95,7 @@ export const Options = () => {
             Website <br />
             <input
               name="www"
-              value={www}
+              value={String(www)}
               onChange={(e) => {
                 setWww(e.target.value)
               }}
@@ -105,7 +105,7 @@ export const Options = () => {
             About <br />
             <input
               name="about"
-              value={about}
+              value={String(about)}
               onChange={(e) => {
                 setAbout(e.target.value)
               }}

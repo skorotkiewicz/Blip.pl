@@ -2,11 +2,16 @@ import { paginate, resolver } from "blitz"
 import db, { Prisma } from "db"
 
 interface GetStatusesInput
-  extends Pick<Prisma.StatusFindManyArgs, "where" | "orderBy" | "skip" | "take"> {}
+  extends Pick<Prisma.StatusFindManyArgs, any | "orderBy" | "skip" | "take"> {}
+// extends Pick<Prisma.StatusFindManyArgs, "where" | "orderBy" | "skip" | "take"> {}
 
 export default resolver.pipe(
   // resolver.authorize(),
   async ({ where, orderBy, skip = 0, take = 100 }: GetStatusesInput) => {
+    console.log(where)
+
+    let tag = `#${where?.tagName}`
+
     const {
       items: statuses,
       hasMore,
@@ -19,7 +24,7 @@ export default resolver.pipe(
         db.status.count({
           where: {
             status: {
-              contains: `#${where.tagName}`,
+              contains: tag,
             },
           },
         }),
@@ -28,7 +33,7 @@ export default resolver.pipe(
           ...paginateArgs,
           where: {
             status: {
-              contains: `#${where.tagName}`,
+              contains: tag,
             },
           },
           orderBy,

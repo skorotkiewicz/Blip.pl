@@ -3,7 +3,7 @@ import db from "db"
 import { z } from "zod"
 
 const SaveOptions = z.object({
-  wallpaper: z.string().max(255),
+  // wallpaper: z.string().max(255),
   avatar: z.string().max(255),
   fullName: z.string().max(255),
   local: z.string().max(255),
@@ -19,7 +19,7 @@ export default resolver.pipe(
     const user = await db.user.update({
       where: { id: ctx.session.userId },
       data: {
-        wallpaper: input.wallpaper,
+        // wallpaper: input.wallpaper,
         avatar: input.avatar,
         fullName: input.fullName,
         local: input.local,

@@ -2,14 +2,9 @@
 import { Suspense } from "react"
 import { Head, usePaginatedQuery, useRouter, BlitzPage, useParam } from "blitz"
 import Layout from "app/core/layouts/Layout"
-import ReactHashtag from "react-hashtag"
 import getTags from "app/statuses/queries/getTags"
 import StatusComp from "app/core/components/StatusComp"
-import AboutTop from "app/core/components/AboutTop"
-import Recommendations from "app/core/components/RecommendationsBox"
-import TagcloudBox from "app/core/components/TagcloudBox"
 import UtilsBox from "app/core/components/UtilsBox"
-import StaticLinks from "app/core/components/StaticLinks"
 import Pagination from "app/core/components/Pagination"
 import Loading from "app/core/components/Loading"
 import Footer from "app/core/components/Footer"
@@ -48,6 +43,7 @@ export const TagsList = () => {
                 date={status.createdAt}
                 transport={status.transport}
                 setReply={null}
+                isPublic={status.isPublic}
               />
             ))}
           </ul>

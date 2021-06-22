@@ -34,7 +34,7 @@ export const StatusesList = () => {
     skip: ITEMS_PER_PAGE * page,
     take: ITEMS_PER_PAGE,
   })
-  const [friends] = useQuery(getFollows, { id: currentUser?.id })
+  const [friends] = useQuery(getFollows, { id: Number(currentUser?.id) })
   const [reply, setReply] = useState("")
 
   return (
