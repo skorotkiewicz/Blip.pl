@@ -12,6 +12,8 @@ declare module "blitz" {
     isAuthorized: SimpleRolesIsAuthorized<Role>
     PublicData: {
       userId: User["id"]
+      name: User["name"]
+      avatar: User["avatar"]
       role: Role
     }
   }

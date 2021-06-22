@@ -13,28 +13,31 @@ export const SignupForm = (props: SignupFormProps) => {
 
   return (
     <div>
-      <h1>Create an Account</h1>
+      <h1>Zarejestruj się</h1>
 
       <Form
-        submitText="Create Account"
+        submitText="Zarejestruj się"
         schema={Signup}
-        initialValues={{ email: "", password: "" }}
+        initialValues={{ name: "", email: "", password: "" }}
         onSubmit={async (values) => {
           try {
             await signupMutation(values)
             props.onSuccess?.()
           } catch (error) {
-            if (error.code === "P2002" && error.meta?.target?.includes("email")) {
+            if (error.code === "P2002" && error.meta?.target?.includes("name")) {
+              return { name: "Ta nazwa użytkownika jest już zajęta" }
+            } else if (error.code === "P2002" && error.meta?.target?.includes("email")) {
               // This error comes from Prisma
-              return { email: "This email is already being used" }
+              return { email: "Ten e-mail jest już używany" }
             } else {
               return { [FORM_ERROR]: error.toString() }
             }
           }
         }}
       >
+        <LabeledTextField name="name" label="Login" placeholder="Login" />
         <LabeledTextField name="email" label="Email" placeholder="Email" />
-        <LabeledTextField name="password" label="Password" placeholder="Password" type="password" />
+        <LabeledTextField name="password" label="Hasło" placeholder="Hasło" type="password" />
       </Form>
     </div>
   )

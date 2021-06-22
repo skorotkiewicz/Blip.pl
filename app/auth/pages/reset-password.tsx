@@ -4,6 +4,7 @@ import { LabeledTextField } from "app/core/components/LabeledTextField"
 import { Form, FORM_ERROR } from "app/core/components/Form"
 import { ResetPassword } from "app/auth/validations"
 import resetPassword from "app/auth/mutations/resetPassword"
+import Header from "app/core/components/Header"
 
 const ResetPasswordPage: BlitzPage = () => {
   const query = useRouterQuery()
@@ -11,49 +12,75 @@ const ResetPasswordPage: BlitzPage = () => {
 
   return (
     <div>
-      <h1>Set a New Password</h1>
+      <div id="full" className="full-container-high">
+        <div id="main" className="clearfix">
+          <Header />
 
-      {isSuccess ? (
-        <div>
-          <h2>Password Reset Successfully</h2>
-          <p>
-            Go to the <Link href={Routes.Home()}>homepage</Link>
-          </p>
+          <div id="content" className="foreign-dashboard">
+            <div className="c">
+              <div>
+                <h1>Ustaw nowe hasło</h1>
+
+                {isSuccess ? (
+                  <div>
+                    <h2>Pomyślne zresetowanie hasła</h2>
+                    <p>
+                      wróć do <Link href={Routes.Home()}>homepage</Link>
+                    </p>
+                  </div>
+                ) : (
+                  <Form
+                    submitText="Resetuj hasło"
+                    schema={ResetPassword}
+                    initialValues={{
+                      password: "",
+                      passwordConfirmation: "",
+                      token: query.token as string,
+                    }}
+                    onSubmit={async (values) => {
+                      try {
+                        await resetPasswordMutation(values)
+                      } catch (error) {
+                        if (error.name === "ResetPasswordError") {
+                          return {
+                            [FORM_ERROR]: error.message,
+                          }
+                        } else {
+                          return {
+                            [FORM_ERROR]:
+                              "Przepraszamy, wystąpił nieoczekiwany błąd. Proszę spróbować ponownie.",
+                          }
+                        }
+                      }
+                    }}
+                  >
+                    <LabeledTextField name="password" label="Nowe hasło" type="password" />
+                    <LabeledTextField
+                      name="passwordConfirmation"
+                      label="Potwierdź nowe hasło"
+                      type="password"
+                    />
+                  </Form>
+                )}
+              </div>
+            </div>
+          </div>
         </div>
-      ) : (
-        <Form
-          submitText="Reset Password"
-          schema={ResetPassword}
-          initialValues={{ password: "", passwordConfirmation: "", token: query.token as string }}
-          onSubmit={async (values) => {
-            try {
-              await resetPasswordMutation(values)
-            } catch (error) {
-              if (error.name === "ResetPasswordError") {
-                return {
-                  [FORM_ERROR]: error.message,
-                }
-              } else {
-                return {
-                  [FORM_ERROR]: "Sorry, we had an unexpected error. Please try again.",
-                }
-              }
-            }
-          }}
-        >
-          <LabeledTextField name="password" label="New Password" type="password" />
-          <LabeledTextField
-            name="passwordConfirmation"
-            label="Confirm New Password"
-            type="password"
-          />
-        </Form>
-      )}
+      </div>
+
+      <style jsx>{`
+        .c {
+          padding: 10px;
+          margin: 10px;
+          background-color: #fff;
+          border-radius: 10px;
+        }
+      `}</style>
     </div>
   )
 }
 
 ResetPasswordPage.redirectAuthenticatedTo = "/"
-ResetPasswordPage.getLayout = (page) => <Layout title="Reset Your Password">{page}</Layout>
+ResetPasswordPage.getLayout = (page) => <Layout title="Zresetuj swoje hasło">{page}</Layout>
 
 export default ResetPasswordPage

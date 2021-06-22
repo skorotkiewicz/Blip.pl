@@ -10,8 +10,10 @@ const Layout = ({ title, children }: LayoutProps) => {
   return (
     <>
       <Head>
-        <title>{title || "Blip"}</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>{title || "BLIP - Bardzo Lubię Informować Przyjaciół"}</title>
+
+        <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+        <link rel="icon" href="/images/favicon.gif" type="image/gif" />
       </Head>
 
       {children}

@@ -8,13 +8,16 @@ import {
   useQueryErrorResetBoundary,
 } from "blitz"
 import LoginForm from "app/auth/components/LoginForm"
+import Loading from "app/core/components/Loading"
 import { Suspense } from "react"
+import "app/blip.css"
+// import "app/blipblog.css"
 
 export default function App({ Component, pageProps }: AppProps) {
   const getLayout = Component.getLayout || ((page) => page)
 
   return (
-    <Suspense fallback="Loading...">
+    <Suspense fallback={<Loading />}>
       <ErrorBoundary
         FallbackComponent={RootErrorFallback}
         onReset={useQueryErrorResetBoundary().reset}
