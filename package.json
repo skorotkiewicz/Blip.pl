@@ -33,7 +33,6 @@
     "react": "alpha",
     "react-dom": "alpha",
     "react-final-form": "6.5.3",
-    "react-hashtag": "2.1.2",
     "zod": "3.2.0"
   },
   "devDependencies": {
