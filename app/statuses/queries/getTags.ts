@@ -8,7 +8,6 @@ interface GetStatusesInput
 export default resolver.pipe(
   // resolver.authorize(),
   async ({ where, orderBy, skip = 0, take = 100 }: GetStatusesInput) => {
-    console.log(where)
 
     let tag = `#${where?.tagName}`
 

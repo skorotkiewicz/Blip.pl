@@ -1,5 +1,5 @@
 import { Suspense } from "react"
-import { Head, usePaginatedQuery, useRouter, BlitzPage, useQuery, useParam, Link } from "blitz"
+import { Head, usePaginatedQuery, useRouter, BlitzPage, useQuery, useParam } from "blitz"
 import Layout from "app/core/layouts/Layout"
 import getStatuses from "app/statuses/queries/getStatuses"
 import getFollows from "app/statuses/queries/getFollows"

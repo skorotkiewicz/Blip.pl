@@ -1,7 +1,6 @@
 import { useMutation } from "blitz"
 import Layout from "app/core/layouts/Layout"
 import createStatus from "app/statuses/mutations/createStatus"
-import { FORM_ERROR } from "app/statuses/components/StatusForm"
 import { useState, useEffect } from "react"
 
 const NewStatusPage /*: BlitzPage */ = ({ refetch, reply }) => {

@@ -9,14 +9,14 @@ const Footer = () => {
       <br />
       Copyright © 2021 ITunix Service
       <br />
-      <p style={{ marginTop: 10 }}>
+      {/* <p style={{ marginTop: 10 }}>
         To jest prywatny projekt, <br />
         jeżeli chcesz wesprzeć autora wyślij{" "}
         <a href="https://paypal.me/modinfo" target="_blank" rel="noreferrer">
           złotówkę
         </a>
         .
-      </p>
+      </p> */}
       <p style={{ marginTop: 10 }}>
         <p>
           Znalazłeś błąd? Napisz wiadomość do ^blipdev
@@ -63,19 +63,19 @@ const Footer = () => {
             <ul>
               <li>
                 Projekt został zbudowany za pomocą{" "}
-                <a href="https://blitzjs.com/" target="_blank">
+                <a href="https://blitzjs.com/" target="_blank" rel="noreferrer">
                   Blitz.js
                 </a>
               </li>
               <li>
                 Baza danych to Postgres z wykorzystaniem{" "}
-                <a href="https://prisma.io/" target="_blank">
+                <a href="https://prisma.io/" target="_blank" rel="noreferrer">
                   Prisma
                 </a>
               </li>
               <li>
                 Hostowane na{" "}
-                <a href="https://heroku.com/" target="_blank">
+                <a href="https://heroku.com/" target="_blank" rel="noreferrer">
                   Heroku
                 </a>
               </li>

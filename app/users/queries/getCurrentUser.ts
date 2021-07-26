@@ -1,6 +1,7 @@
 import { Ctx } from "blitz"
 import db from "db"
 
+// eslint-disable-next-line no-unused-vars
 export default async function getCurrentUser(_ = null, { session }: Ctx) {
   if (!session.userId) return null
 

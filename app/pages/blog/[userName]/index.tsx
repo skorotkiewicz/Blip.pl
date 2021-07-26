@@ -34,7 +34,7 @@ export const UserProfile = () => {
 
   const router = useRouter()
   const page = Number(router.query.page) || 0
-  const [{ statuses, hasMore }] = usePaginatedQuery(getStatuses, {
+  const [{ statuses /*, hasMore */ }] = usePaginatedQuery(getStatuses, {
     where: { userId: user.id },
     orderBy: { id: "desc" },
     skip: ITEMS_PER_PAGE * page,
@@ -42,7 +42,6 @@ export const UserProfile = () => {
   })
 
   let lastDay
-  let allLastDay = []
 
   const [friends] = useQuery(getFollows, { id: user.id })
 

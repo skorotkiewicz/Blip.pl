@@ -1,5 +1,5 @@
 import { Suspense, useState } from "react"
-import { Head, usePaginatedQuery, useRouter, BlitzPage, useQuery, Link } from "blitz"
+import { Head, usePaginatedQuery, useRouter, BlitzPage, useQuery } from "blitz"
 import Layout from "app/core/layouts/Layout"
 import getStatuses from "app/statuses/queries/getStatuses"
 import StatusForm from "app/pages/NewStatus"
@@ -8,7 +8,6 @@ import getFollows from "app/statuses/queries/getFollows"
 import StatusComp from "app/core/components/StatusComp"
 import FriendsBox from "app/core/components/FriendsBox"
 import Pagination from "app/core/components/Pagination"
-import UtilsBox from "app/core/components/UtilsBox"
 import AboutTop from "app/core/components/AboutTop"
 import Recommendations from "app/core/components/RecommendationsBox"
 import TagcloudBox from "app/core/components/TagcloudBox"
@@ -23,7 +22,8 @@ export const StatusesList = () => {
 
   if (!currentUser) {
     // HACK to work login from index page FIXME for better functionality
-    location.reload(true)
+    // eslint-disable-next-line no-undef
+   location.reload(true)
   }
 
   const router = useRouter()

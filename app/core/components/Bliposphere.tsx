@@ -1,5 +1,6 @@
+/* eslint-disable @next/next/no-img-element */
 import React from "react"
-import { useQuery, Link } from "blitz"
+import { useQuery } from "blitz"
 import getBliposphere from "app/statuses/queries/getBliposphere"
 // import ReactHashtag from "app/react-hashtag"
 import { parser } from "app/parser"

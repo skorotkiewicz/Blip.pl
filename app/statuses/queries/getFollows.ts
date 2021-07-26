@@ -1,11 +1,9 @@
-import { resolver, NotFoundError } from "blitz"
+import { resolver } from "blitz"
 import db from "db"
 import { z } from "zod"
 
 const GetFollows = z.object({
-  // This accepts type of undefined, but is required at runtime
   id: z.number(),
-  // id: z.number().optional().refine(Boolean, "Required"),
 })
 
 export default resolver.pipe(

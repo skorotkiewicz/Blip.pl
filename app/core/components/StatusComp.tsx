@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { Link, Image, useMutation, useRouter } from "blitz"
+import { Link, useMutation, useRouter } from "blitz"
 import React from "react"
 import moment from "moment"
 // import ReactHashtag from "app/react-hashtag"

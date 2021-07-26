@@ -1,10 +1,7 @@
 module.exports = {
   extends: ["blitz"],
+  rules: {
+    "no-unused-vars": "warn",
+    "no-empty": "off",
+  },
 }
-
-// module.exports = {
-//   extends: ["blitz", "eslint:recommended"],
-//   rules: {
-//     "no-unused-vars": ["error", { vars: "all", args: "after-used", ignoreRestSiblings: false }],
-//   },
-// }

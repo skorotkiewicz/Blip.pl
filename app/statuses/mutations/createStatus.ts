@@ -49,15 +49,11 @@ export default resolver.pipe(
       let userInput = input.status.replace(/\n/g, " ").trim()
 
       // create PM (Private message) [Private]
-      // >> ^ala jak się masz?
-      // PM = input.status.match(/^>> \^([\w]+) (.*)$/)
-      // >>ala jak się masz? [NOWE]
+      // >>ala jak się masz?
       PM = userInput.match(/^>>([\w]+) (.*)$/)
 
       // create DM (Direct message) [Public]
-      // > ^ala jak się masz?
-      // DM = input.status.match(/^> \^([\w]+) (.*)$/)
-      // >ala jak się masz? [NOWE]
+      // >ala jak się masz?
       DM = userInput.match(/^>([\w]+) (.*)$/)
 
       if (PM) {

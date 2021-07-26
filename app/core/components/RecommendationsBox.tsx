@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 const Recommendations = () => {
   return (
     <div id="recommendations-box-container">
